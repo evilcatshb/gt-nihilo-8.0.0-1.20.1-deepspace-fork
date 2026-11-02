@@ -115,11 +115,11 @@ repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
+    // Local GregTech CEu 8.0.0 snapshot jar, placed in ./libs.
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    // flatDir {
-    //     dir 'libs'
-    // }
+    flatDir {
+        dir 'libs'
+    }
 }
 
 dependencies {
@@ -129,6 +129,11 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // GregTech CEu (GTCEu) 8.0.0 snapshot.
+    // Maps to ./libs/gtceu-1.20.1-8.0.0-SNAPSHOT+20260827-224015-b66cf8d.jar via the flatDir repo above.
+    // fg.deobf() remaps the jar's SRG names back to this project's "official" dev mappings.
+    implementation fg.deobf("blank:gtceu-1.20.1:8.0.0-SNAPSHOT+20260827-224015-b66cf8d")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

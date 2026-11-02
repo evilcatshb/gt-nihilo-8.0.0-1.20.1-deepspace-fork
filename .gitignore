@@ -27,3 +27,7 @@ repo
 /.vscode
 *.url
 *.lnk
+
+# Local diagnostics and extracted reference artifacts
+*.log
+old_jar_extract/
